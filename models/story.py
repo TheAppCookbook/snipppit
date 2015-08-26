@@ -6,4 +6,5 @@ class Story(ParseObject):
     pass
     
     # title: str
-    # posts: [Post]
+    # accepted_posts: [Post]
+    # snippets: [Post]
