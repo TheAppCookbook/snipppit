@@ -1,3 +1,7 @@
+from parse_rest.connection import SessionToken
+from parse_rest.core import ResourceRequestNotFound
+
+
 class Route:
     methods = []
     
@@ -10,3 +14,16 @@ class Route:
             return self.PUT(request, *args)
         elif request.method == 'DELETE':
             return self.DELETE(request, *args)
+
+def require_session(func):
+    def func_wrapper(self, request, *args):
+        try:
+            session_token = request.values.get('session')
+            with SessionToken(session_token):
+                 return func(self, request, *args)
+        except ResourceRequestNotFound:
+            pass
+             
+        return ("", 401)
+        
+    return func_wrapper

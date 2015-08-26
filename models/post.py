@@ -1,9 +1,8 @@
-from commons import parse_client
-from parse_rest.datatypes import Object as ParseObject
+from parse_rest.datatypes import Object
 from parse_rest.user import User
 
 
-class Post(ParseObject):
+class Post(Object):
     textLength = 500
 
     def valid(self):
