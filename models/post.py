@@ -3,14 +3,23 @@ from parse_rest.user import User
 
 
 class Post(Object):
+    # Class Properties
     textLength = 500
+    
+    # Properties
+    # text: str
+    # author: User
+    # voted_users: [User]
+    # archived: bool
 
+    # Class Accessors
+    @classmethod
+    def max_vote_count(cls):
+        return 10
+
+    # Accessors
     def valid(self):
         return (
             len(self.text or "") > 0 and
             len(self.text or "") < Post.textLength
         )
-    
-    # text: str
-    # author: User
-    # voted_user: [User]
