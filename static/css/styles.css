@@ -1,0 +1,189 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+	}
+
+.row {
+	margin: 0;
+	}
+
+a {
+	color: #fff;
+	}
+
+.navbar-main {
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	background: #65799B;
+	border-radius: 0;
+	z-index: 2;
+	color: #fff;
+	}
+	
+.navbar-main-left {
+	width: 50%;
+	float: left;
+	}
+	
+.navbar-main-right {
+	width: 50%;
+	float: left;
+	text-align: right;
+	}
+	
+.paper-container {
+	background: red;
+	padding-top: 75px;
+	padding-left: 15px;
+	height: 100vh;
+	}
+	
+.edit-container {
+	background: blue;
+	padding-top: 75px;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 100vh;
+    overflow: scroll;
+	}
+	
+.paper-view {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 3px;
+	padding: 30px 30px 60px 60px;
+    overflow: scroll;
+	}
+	
+.paper-header {
+	height: 75px;
+	width: 100%;
+	background: green;	
+	}
+	
+.paper-header-left {
+	width: 50%;
+	float: left;
+	}
+
+.paper-header-right {
+	width: 50%;
+	float: left;
+	text-align: right;
+	}
+	
+.paper-title {
+	width: 100%;
+	margin-bottom: 30px;
+	}
+	
+.snipppet-accepted {
+	width: 100%;
+	height: 200px;
+	margin-bottom: 30px;
+	}
+			
+.snipppet-text {
+	width: 90%;
+	float: left;
+	background: orange;
+	height: 100%;
+	}
+		
+.snipppet-editors {
+	width: 10%;
+	float: left;
+	background: yellow;
+	height: 100%;
+	}
+	
+.editor-avatar {
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background: #ccc;
+	margin: 0 auto;
+	}
+	
+.time-edited {
+	width: 100%;
+	text-align: center;
+	}
+	
+.edit-header {
+	height: 125px;
+	width: 100%;
+	border-bottom: solid 1px #ccc;
+	text-align: center;
+	color: white;
+	}
+	
+.edit-nav-left {
+	width: 50%;
+	float: left;
+	}
+	
+.edit-nav-right {
+	width: 50%;
+	float: left;
+	text-align: right;	
+	}
+	
+.edit-nav {
+	height: 60px;
+	width: 100%;
+	padding: 15px;
+	color: white;
+	}
+	
+.snipppet-card {
+	padding: 30px;
+	background: #fff;
+	border-radius: 3px;
+	width: 100%;
+	margin-bottom: 15px;
+	display: inline-block;
+	}
+
+.snipppet-card .snipppet-text {
+	width: 100%;
+	}
+
+.snipppet-card-nav {
+	height: 25px;
+	width: 100%;
+	}
+	
+.snipppet-card-nav-left .editor-avatar {
+	margin: 0 !important;
+	}
+
+	
+.snipppet-card-nav-left {
+	width: 50%;
+	float: left;
+	}
+	
+.snipppet-card-nav-right {
+	width: 50%;
+	float: left;
+	text-align: right;
+	}
+	
+	
+	
+.snipppet-card-nav button {
+	}
+	
+button {
+	color: #000;
+	}
+	
