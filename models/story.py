@@ -28,6 +28,11 @@ class Story(Object):
         
     # Accessors
     def accepting_snippets(self):
+        if len(self.accepted_posts) == 0:
+            post_time = self.createdAt
+        else:
+            post_time = self.accepted_posts[-1].createdAt
+            
         elapsed_time = (datetime.now - self.createdAt).total_seconds()
         return elapsed_time > Story.editing_window
         
@@ -38,6 +43,7 @@ class Story(Object):
     def accept_post(self, post):
         for snippet_post in self.snippets:
             snippet_post.archived = True
+            snippet_post.original_story = self
             
         batcher = ParseBatcher()
         batcher.batch_save(self.snippets)

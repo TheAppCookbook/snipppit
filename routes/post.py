@@ -54,7 +54,7 @@ class Vote(Route):
         post.voted_users = list(voted_users)
         post.save()
         
-        if len(post.voted_users) > models.post.Post.max_vote_count():
+        if len(post.voted_users) >= models.post.Post.max_vote_count():
             story.accept_post(post)
             story.save()
         

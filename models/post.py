@@ -15,7 +15,7 @@ class Post(Object):
     # Class Accessors
     @classmethod
     def max_vote_count(cls):
-        return 10
+        return 2
 
     # Accessors
     def valid(self):
