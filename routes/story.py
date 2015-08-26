@@ -10,6 +10,7 @@ class Story(Route):
     methods = ['GET', 'PUT']
     
     def GET(self, request, story_id):
+        session = request.values.get("session")
         return flask.render_template("story.html")
         
     def PUT(self, request, story_id):
