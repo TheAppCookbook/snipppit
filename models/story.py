@@ -32,7 +32,8 @@ class Story(Model):
         if len(self.accepted_posts) == 0:
             post_time = self.createdAt
         else:
-            post_time = self.accepted_posts[-1].createdAt
+            post = Post.get(self.accepted_posts[-1]['objectId'])
+            post_time = post.createdAt
     
         return (datetime.datetime.now() - post_time)
         
@@ -50,7 +51,7 @@ class Story(Model):
     # ... contributions  
     def contributors(self):
         return set([
-            post.get(p['objectId']).author
+            Post.get(p['objectId']).author
             for p in self.accepted_posts
         ])
         
@@ -58,19 +59,21 @@ class Story(Model):
         if len(self.accepted_posts) == 0:
             return self.createdAt
         else:
-            return self.accepted_posts[-1].createdAt
+            post = Post.get(self.accepted_posts[-1]['objectId'])
+            return post.createdAt
         
     def complete(self):
         return len(self.accepted_posts) == Story.max_post_count
         
     # Mutators
     def accept_post(self, post):
-        for snippet_post in self.snippets:
+        snippet_posts = [Post.get(snip['objectId']) for snip in self.snippets]
+        for snippet_post in snippet_posts:
             snippet_post.archived = True
             snippet_post.original_story = self
             
         batcher = ParseBatcher()
-        batcher.batch_save(self.snippets)
+        batcher.batch_save(snippet_posts)
     
         self.snippets = []
         self.accepted_posts.append(post)

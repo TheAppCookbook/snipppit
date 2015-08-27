@@ -14,11 +14,11 @@
 
 <body>
 	<div class="navbar-main">
-		<div class="navbar-main-left"><a href=""><img src="../static/images/back-arrow.svg" height="16px">&nbsp;All stories</a></div>
+		<div class="navbar-main-left"><a href="/stories"><img src="../static/images/back-arrow.svg" height="16px">&nbsp;All stories</a></div>
 		<!--{% if session %}-->
 		<div class="navbar-main-right"><a href="/logout">Log out</a><div class="user-avatar"></div></div>
 		<!--{% else %}-->
-		<div class="navbar-main-right"><a href="/login">Log in</a></div></div>
+		<div class="navbar-main-right"><a href="/login">Log in</a></div>
 		<!--{% endif %}-->
 	</div>
 	<div class="row main-content">
@@ -44,7 +44,7 @@
 						<div class="editor-avatar">
 						</div>
 						<div class="time-edited">
-							<p>1h ago</p>
+							<p>{{ (post.elapsed_time().seconds / 3600)|int }}h ago</p>
 						</div>
 					</div>
 				</div>
@@ -66,7 +66,7 @@
 			        <input type="hidden" name="session" value="{{ session }}" />
 			    
 					<div class="snipppet-text">
-						<textarea name="text" placeholder="Type your snippet here"></textarea>
+						<textarea name="text" placeholder="Type your snippet here (max 500 characters)"></textarea>
 					</div>
 					<div class="snipppet-card-nav">
 						<div class="snipppet-card-nav-left">
@@ -94,7 +94,7 @@
 					<!--{% else %}-->
 					<div class="snipppet-card-nav-right disabled">
 					<!--{% endif %}-->
-					    <!--{% if post.user_voted(session) %}-->
+					    <!--{% if session and post.user_voted(session) %}-->
 						<button class="vote active" id="vote_{{ post.objectId }}" onclick="voteButtonWasPressed('{{ post.objectId }}');">
 						<!--{% else %}-->
 						<button class="vote" id="vote_{{ post.objectId }}" onclick="voteButtonWasPressed('{{ post.objectId }}');">
