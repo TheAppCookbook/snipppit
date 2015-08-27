@@ -48,17 +48,32 @@ a {
 .navbar-main-left {
 	width: 50%;
 	float: left;
-	display: table-cell;
-	vertical-align: middle;
+	height: 60px;
+	padding-top: 16px;
+	padding-left: 30px;
+	font-weight: 600;
 	}
 	
 .navbar-main-right {
 	width: 50%;
 	float: right;
 	text-align: right;
-	display: table-cell;
-	vertical-align: middle;
+	height: 60px;
+	padding-top: 16px;
+	padding-right: 30px;
 	}
+	
+.navbar-main-right a {
+	float: right;
+	margin-left: 10px;
+	font-weight: 600;
+	}
+	
+.navbar-main-right a:hover,  .navbar-main-left a:hover{
+	text-decoration: none;
+	color: #f1f1f1;
+	}
+	
 	
 .paper-container {
 	padding-top: 75px;
@@ -433,11 +448,17 @@ input[type="submit"].submit-snipppet:hover {
 	}
 	
 button.compose {
-	background: #3B4043;
+	background: #3B4043 url('../images/pen.svg') no-repeat;
+	background-position: 10% center;
+	background-size: 11px;
+	padding-left: 28px;
 	}
 	
 button.compose:hover {
-	background: #313638;
+	background: #313638 url('../images/pen.svg') no-repeat;
+	background-position: 10% center;
+	background-size: 11px;
+	padding-left: 28px;
 	}
 	
 button.vote {
@@ -461,7 +482,14 @@ button.vote.active {
 	color: #fff;
 	background: #65799B url('../images/arrow.svg') no-repeat;
 	background-position: 10% center;
-	padding-left: 25px;
+	paddingw-left: 25px;
 	}
 
+.user-avatar {
+	width: 24px;
+	height: 24px;
+	border: 2px solid #fff;
+	border-radius:12px;
+	float: right;
+	}
 	
