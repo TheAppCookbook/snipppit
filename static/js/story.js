@@ -35,18 +35,35 @@ $(function () {
 });
 
 function voteButtonWasPressed(postID) {
-    $.post("/post/" + postID + "/vote", {}, function(response) {
+    var voteButtonID = "#vote_" + postID;
+    var url = "/post/" + postID + "/vote";
+    
+    var method = 'put';
+    if ($(voteButtonID).hasClass('active')) {
+        method = 'delete';
+    }
+    
+    var success = function(response) {
         response = JSON.parse(response);
-        var voteButtonID = "#vote_" + postID;
         
         var text = $(voteButtonID).text();
         var pieces = text.split('/');
 
         $(voteButtonID).text(response.votes + '/' + pieces[1]);
-        $(voteButtonID).addClass('active');
+        if (method == 'put') {
+            $(voteButtonID).addClass('active');
+        } else {
+            $(voteButtonID).removeClass('active');
+        }
         
         if (response.refresh) {
             location.reload();
         }
+    }
+    
+    $.ajax({
+        url: url,
+        type: method,
+        success: success
     });
 }
