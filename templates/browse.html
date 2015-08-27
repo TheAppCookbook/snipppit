@@ -11,9 +11,13 @@
 </head>
 
 <body>
+	<div class="logo"><p>snipppit</p></div>
 	<div class="navbar-main">
-		<div class="navbar-main-right"><a href="">Log out</a></div>
-	</div>
+		<!--{% if session %}-->
+		<div class="navbar-main-right"><a href="/logout">Log out</a><div class="user-avatar">{{ initials }}</div></div>
+		<!--{% else %}-->
+		<div class="navbar-main-right"><a href="/login">Log in</a></div>
+		<!--{% endif %}-->	</div>
 	<div class="row main-content browse">
 		<div class="col-md-12">
 		    <!--{% for row in rows %}-->
