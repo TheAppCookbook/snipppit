@@ -35,7 +35,7 @@ a {
 	
 .navbar-main-right {
 	width: 50%;
-	float: left;
+	float: right;
 	text-align: right;
 	}
 	
@@ -219,5 +219,34 @@ button {
 	color: black;
 	}
 
+.main-content.browse {
+	padding-top: 130px;
+	
+	}
+	
+.content-card.story {
+	width: 90%;
+	padding: 40px;
+	border-radius: 3px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	text-align: center;
+	}
+	
+.browse-row {
+	margin-bottom: 30px;
+	padding-left: 75px;
+	padding-right: 75px;
+	}
+
+.browse-snipppet {
+	text-align: left;
+	}
+	
+.divider {
+	height: 1px;
+	background: #ccc;
+	width: 100%;
+	}
 	
 	
