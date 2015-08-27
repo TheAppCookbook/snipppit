@@ -15,11 +15,11 @@
 <body>
 	<div class="navbar-main">
 		<div class="navbar-main-left"><a href="">All stories</a></div>
-		{% if session %}
+		<!--{% if session %}-->
 		<div class="navbar-main-right"><a href="/logout">Log out</a></div>
-		{% else %}
+		<!--{% else %}-->
 		<div class="navbar-main-right"><a href="/login">Log in</a></div>
-		{% endif %}
+		<!--{% endif %}-->
 	</div>
 	<div class="row main-content">
 		<div class="col-md-7 paper-container">
@@ -35,7 +35,7 @@
 				<div class="paper-title">
 					<h2>{{ story.title }}</h2>
 				</div>
-				{% for post in accepted_posts %}
+				<!--{% for post in accepted_posts %}-->
 				<div class="snipppet-accepted">
 					<div class="snipppet-text">
 						<p>{{ post.text }}</p>
@@ -48,7 +48,7 @@
 						</div>
 					</div>
 				</div>
-				{% endfor %}
+				<!--{% endfor %}-->
 			</div>
 		</div>
 		<div class="col-md-5 edit-container">
@@ -60,7 +60,7 @@
 				<div class="edit-nav-left"><p> <span class="count-down" finished="Voting has begun!">{{ story.time_til_voting() }}</span> until voting begins. </p></div>
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
-			{% if session %}
+			<!--{% if session %}-->
 			<div class="snipppet-card snipppet-card-editing">
 			    <form action="/post" method="POST">
 			        <input type="hidden" name="session" value="{{ session }}" />
@@ -78,9 +78,9 @@
 					</div>
 				</form>
 			</div>
-			{% endif %}
+			<!--{% endif %}-->
 			
-			{% for post in snippets %}
+			<!--{% for post in snippets %}-->
 			<div class="snipppet-card">
 				<div class="snipppet-text">
 					<p> {{ post.text }} </p>
@@ -94,7 +94,7 @@
 					</div>
 				</div>
 			</div>
-			{% endfor %}
+			<!--{% endfor %}-->
 		</div>
 	</div>
 
