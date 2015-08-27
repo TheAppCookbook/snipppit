@@ -60,7 +60,7 @@
 				<div class="edit-nav-left"><p> <span class="count-down" finished="Voting has begun!">{{ story.time_til_voting() }}</span> until voting begins. </p></div>
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
-			<!--{% if session %}-->
+			<!--{% if session and not story.complete() %}-->
 			<div class="snipppet-card snipppet-card-editing">
 			    <form action="/post" method="POST">
 			        <input type="hidden" name="session" value="{{ session }}" />
