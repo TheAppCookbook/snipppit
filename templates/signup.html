@@ -15,10 +15,10 @@
 			<div class="content-card signup">
 				<h3>This is a catchy headline </h3>
 				<div class="signup-form">
-					<form>
-						<input type="text" placeholder="First name"><input type="text" placeholder="Last name">
-						<input type="text" placeholder="E-mail">
-						<input type="text" placeholder="Password">
+					<form action="/login" method="POST">
+						<input type="text" placeholder="First Name" name="first_name"><input type="text" placeholder="Last Name" name="last_name">
+						<input type="text" placeholder="E-mail" name="email">
+						<input type="password" placeholder="Password" name="password">
 						<input type="submit" value="Submit">
 					</form>
 				</div>

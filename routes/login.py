@@ -10,7 +10,7 @@ class Login(Route):
     methods = ['GET', 'POST']
     
     def GET(self, request):
-        return flask.render_template("login.html")
+        return flask.render_template("signup.html")
         
     def POST(self, request):
         username = request.values.get("email").lower()
