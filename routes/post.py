@@ -44,7 +44,7 @@ class Vote(Route):
         elif not story.accepting_snippets():
             return ("", 429)
             
-        post = models.post.Post.Query.get(objectId=post_id)
+        post = models.post.Post.get(post_id)
         if not post:
             return ("", 404)
             

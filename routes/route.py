@@ -18,8 +18,8 @@ class Route:
 def require_session(func):
     def func_wrapper(self, request, *args):
         try:
-            session_token = request.values.get('session')
-            with SessionToken(session_token):
+            session = request.values.get('session')
+            with SessionToken(session):
                  return func(self, request, *args)
         except ResourceRequestNotFound:
             pass

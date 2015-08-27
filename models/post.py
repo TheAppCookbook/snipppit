@@ -1,8 +1,8 @@
-from parse_rest.datatypes import Object
 from parse_rest.user import User
+from models.model import Model
 
 
-class Post(Object):
+class Post(Model):
     # Class Properties
     textLength = 500
     
