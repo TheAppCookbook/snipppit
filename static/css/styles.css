@@ -456,9 +456,9 @@ button.compose {
 	
 button.compose:hover {
 	background: #313638 url('../images/pen.svg') no-repeat;
-	background-position: 10% center;
+	background-position: 12% center;
 	background-size: 11px;
-	padding-left: 28px;
+	padding-left: 30px;
 	}
 	
 button.vote {
