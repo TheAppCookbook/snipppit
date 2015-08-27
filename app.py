@@ -4,7 +4,7 @@ from flask import Flask, request
 from commons import parse_client
 
 from routes.index import Index
-from routes.login import Login, PasswordReset
+from routes.login import Login, Logout, PasswordReset
 from routes.story import Story, Stories
 from routes.post import Post, Vote
 
@@ -20,6 +20,10 @@ def _index():
 @app.route('/login', methods=Login.methods)
 def _login():
     return Login().route(request)
+    
+@app.route('/logout', methods=Login.methods)
+def _logout():
+    return Logout().route(request)
     
 @app.route('/forgot', methods=PasswordReset.methods)
 def _forgot():
