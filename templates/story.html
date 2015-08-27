@@ -16,7 +16,7 @@
 	<div class="navbar-main">
 		<div class="navbar-main-left"><a href="/stories"><img src="../static/images/back-arrow.svg" height="16px">&nbsp;All stories</a></div>
 		<!--{% if session %}-->
-		<div class="navbar-main-right"><a href="/logout">Log out</a><div class="user-avatar"></div></div>
+		<div class="navbar-main-right"><a href="/logout">Log out</a><div class="user-avatar">{{ initials }}</div></div>
 		<!--{% else %}-->
 		<div class="navbar-main-right"><a href="/login">Log in</a></div>
 		<!--{% endif %}-->
@@ -42,6 +42,7 @@
 					</div>
 					<div class="snipppet-editors">
 						<div class="editor-avatar">
+						    {{ post.author_initials() }}
 						</div>
 						<div class="time-edited">
 							<p>{{ (post.elapsed_time().seconds / 3600)|int }}h ago</p>
@@ -70,7 +71,7 @@
 					</div>
 					<div class="snipppet-card-nav">
 						<div class="snipppet-card-nav-left">
-							<div class="editor-avatar"></div>
+							<div class="editor-avatar">{{ initials }}</div>
 						</div>
 						<div class="snipppet-card-nav-right">
 							<input type="submit" value="Submit" class="submit-snipppet" />
@@ -87,7 +88,7 @@
 				</div>
 				<div class="snipppet-card-nav">
 					<div class="snipppet-card-nav-left">
-						<div class="editor-avatar"></div>
+						<div class="editor-avatar">{{ post.author_initials() }}</div>
 					</div>
 					<!--{% if session %}-->
 					<div class="snipppet-card-nav-right">

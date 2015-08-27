@@ -33,6 +33,15 @@ class Post(Model):
                 user for user in self.voted_users
                 if user['objectId'] == User.current_user().objectId
             ])
+    
+    def author_initials(self):
+        initials = ":)"
+        
+        user = self.author
+        if user:
+            initials = user.first_name[0] + user.last_name[0]
+            
+        return initials
         
 # Functions
 def comparePosts(self, other):

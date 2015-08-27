@@ -1,6 +1,7 @@
 from routes.route import Route
 import models
 
+from parse_rest.connection import SessionToken
 from parse_rest.connection import ACCESS_KEYS
 from parse_rest.user import User
 
@@ -25,12 +26,18 @@ class Story(Route):
             for post in story.snippets
         ], cmp=models.post.comparePosts)
         
+        initials = ":)"
+        with SessionToken(self.session(request)):
+            user = User.current_user()
+            initials = user.first_name[0] + user.last_name[0]
+        
         return flask.render_template(
             "story.html",
             story=story,
             accepted_posts=accepted_posts,
             snippets=snippets,
             
+            initials = initials,
             session = self.session(request),
             
             max_vote_count=models.post.Post.max_vote_count(),
