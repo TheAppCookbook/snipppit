@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial scale=1.0">
 	<link href="../static/css/bootstrap.css" rel="stylesheet">
 	<link href="../static/css/styles.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="../static/js/story.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -50,7 +52,7 @@
 				<p>Vote on the next snipppet of the story below, or submit one yourself!</p>
 			</div>
 			<div class="edit-nav">
-				<div class="edit-nav-left"><p> {{ story.time_til_voting() }} </p></div>
+				<div class="edit-nav-left"><p> <span class="count-down" finished="Voting has begun!">{{ story.time_til_voting() }}</span> until voting begins. </p></div>
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
 			{% if session %}

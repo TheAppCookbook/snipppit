@@ -40,9 +40,9 @@ class Story(Model):
     def time_til_voting(self):
         seconds = Story.editing_window - self.elapsed_time().seconds
         if seconds < 0:
-            return "Voting has begun!"
+            return "00:00"
         
-        return "%02d:%02d until voting begins." % divmod(divmod(seconds, 3600)[-1], 60)
+        return "%02d:%02d" % divmod(divmod(seconds, 3600)[-1], 60)
     
     def accepting_snippets(self):
         return self.elapsed_time().total_seconds() > Story.editing_window
