@@ -30,8 +30,12 @@ class Login(Route):
                 password
             )
 
-        redirect_path = '/?session=' + user.sessionToken
-        return flask.redirect(redirect_path, 200)
+        response = flask.make_response(
+            flask.redirect("/", 200)
+        )
+
+        response.set_cookie("session", user.sessionToken)
+        return response
 
 class PasswordReset(Route):
     methods = ['GET']

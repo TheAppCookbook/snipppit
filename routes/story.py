@@ -2,6 +2,7 @@ from routes.route import Route
 import models
 
 from parse_rest.connection import ACCESS_KEYS
+from parse_rest.user import User
 
 import flask
 
@@ -30,7 +31,8 @@ class Story(Route):
             "story.html",
             story=story,
             accepted_posts=accepted_posts,
-            snippets=snippets
+            snippets=snippets,
+            session = self.session(request)
         )
         
     def PUT(self, request, story_id):
