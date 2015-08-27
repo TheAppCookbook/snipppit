@@ -54,6 +54,19 @@
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
 			{% for post in snippets %}
+			<div class="snipppet-card snipppet-card-editing">
+				<div class="snipppet-text">
+					<input type="textarea" placeholder="Type your snippet here">
+				</div>
+				<div class="snipppet-card-nav">
+					<div class="snipppet-card-nav-left">
+						<div class="editor-avatar"></div>
+					</div>
+					<div class="snipppet-card-nav-right">
+						<button>Submit</button>
+					</div>
+				</div>
+			</div>
 			<div class="snipppet-card">
 				<div class="snipppet-text">
 					<p> {{ post.text }} </p>
