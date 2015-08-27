@@ -30,9 +30,13 @@ class Story(Route):
             story=story,
             accepted_posts=accepted_posts,
             snippets=snippets,
+            
             session = self.session(request),
+            
             max_vote_count=models.post.Post.max_vote_count(),
-            user_voted_story=story.user_voted(self.session(request))
+            user_voted_story=story.user_voted(self.session(request)),
+            
+            text_length=models.post.Post.text_length
         )
         
     def PUT(self, request, story_id):

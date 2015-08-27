@@ -7,7 +7,7 @@ from parse_rest.connection import SessionToken
 
 class Post(Model):
     # Class Properties
-    textLength = 500
+    text_length = 500
     
     # Properties
     # text: str
@@ -24,7 +24,7 @@ class Post(Model):
     def valid(self):
         return (
             len(self.text or "") > 0 and
-            len(self.text or "") < Post.textLength
+            len(self.text or "") < Post.text_length
         )
         
     def user_voted(self, session):
