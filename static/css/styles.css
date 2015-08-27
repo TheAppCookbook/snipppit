@@ -2,6 +2,7 @@ body, html {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	background: #F4F4F4;
 	}
 
 h1, h2, h3, h4, h5 {
@@ -177,13 +178,46 @@ a {
 	float: left;
 	text-align: right;
 	}
-	
-	
-	
+		
 .snipppet-card-nav button {
 	}
 	
 button {
 	color: #000;
 	}
+
+.col-md-12.signup {
+	text-align: center;
+	padding-top: 70px;
+	}
+	
+.content-card {
+	padding: 50px;
+	background: #fff;
+	}
+	
+.content-card.signup {
+	width: 400px;
+	margin: 0 auto;
+	display: inline-block;
+	}
+	
+.sub-signup-left {
+	width: 50%;
+	float: left;
+	height: 25px;
+	}
+	
+.sub-signup-right {
+	width: 50%;
+	float: left;
+	text-align: right;
+	height: 25px;
+	}
+	
+.sub-signup-left a, .sub-signup-right a {
+	color: black;
+	}
+
+	
 	
