@@ -4,6 +4,7 @@ import models
 from parse_rest.user import User
 
 import flask
+import json
 
 
 class Post(Route):
@@ -34,10 +35,10 @@ class Post(Route):
         
 
 class Vote(Route):
-    methods = ['POST']
+    methods = ['PUT', 'DELETE']
     
     @require_session
-    def POST(self, request, post_id):
+    def PUT(self, request, post_id):
         story = models.story.Story.active_story()
         if not story:
             return ("", 400)
@@ -48,14 +49,44 @@ class Vote(Route):
         if not post:
             return ("", 404)
             
-        voted_users = set(post.voted_users)
-        voted_users.add(User.current_user())
+        voted_users = [user['objectId'] for user in post.voted_users]
+        if User.current_user().objectId not in voted_users:
+            post.voted_users.append(User.current_user())
         
-        post.voted_users = list(voted_users)
         post.save()
         
+        refresh = False
         if len(post.voted_users) >= models.post.Post.max_vote_count():
             story.accept_post(post)
             story.save()
+            
+            refresh = True
         
-        return flask.redirect('/')
+        return json.dumps({
+            'votes': len(post.voted_users),
+            'refresh': refresh
+        })
+        
+    @require_session
+    def DELETE(self, request, post_id):
+        story = models.story.Story.active_story()
+        if not story:
+            return ("", 400)
+        elif not story.accepting_snippets():
+            return ("", 429)
+            
+        post = models.post.Post.get(post_id)
+        if not post:
+            return ("", 404)
+            
+        voted_users = [user['objectId'] for user in post.voted_users]
+        if User.current_user().objectId in voted_users:
+            post.voted_users = [
+                user for user in post.voted_users
+                if user['objectId'] != User.current_user().objectId
+            ]
+        
+        post.save()
+        return json.dumps({
+            'votes': len(post.voted_users)
+        })

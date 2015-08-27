@@ -449,9 +449,9 @@ input[type="submit"].submit-snipppet:hover {
 	
 button.compose {
 	background: #3B4043 url('../images/pen.svg') no-repeat;
-	background-position: 10% center;
+	background-position: 12% center;
 	background-size: 11px;
-	padding-left: 28px;
+	padding-left: 30px;
 	}
 	
 button.compose:hover {
@@ -482,7 +482,14 @@ button.vote.active {
 	color: #fff;
 	background: #65799B url('../images/arrow.svg') no-repeat;
 	background-position: 10% center;
-	paddingw-left: 25px;
+	padding-left: 25px;
+	}
+	
+button.inactive {
+	border: 1px solid #ccc;
+	color: #9b9b9b;
+	background: #fff;
+	background-position: 10% center;
 	}
 
 .user-avatar {
@@ -493,3 +500,6 @@ button.vote.active {
 	float: right;
 	}
 	
+.disabled {
+    pointer-events: none;
+}

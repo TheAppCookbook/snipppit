@@ -1,7 +1,6 @@
 // Time
 function seconds(time_str) {
     var pieces = time_str.split(':');
-    console.log(pieces);
     return (parseInt(pieces[0]) * 60) + parseInt(pieces[1]);
 }
 
@@ -34,3 +33,37 @@ $(function () {
         });
     }, 1000);
 });
+
+function voteButtonWasPressed(postID) {
+    var voteButtonID = "#vote_" + postID;
+    var url = "/post/" + postID + "/vote";
+    
+    var method = 'put';
+    if ($(voteButtonID).hasClass('active')) {
+        method = 'delete';
+    }
+    
+    var success = function(response) {
+        response = JSON.parse(response);
+        
+        var text = $(voteButtonID).text();
+        var pieces = text.split('/');
+
+        $(voteButtonID).text(response.votes + '/' + pieces[1]);
+        if (method == 'put') {
+            $(voteButtonID).addClass('active');
+        } else {
+            $(voteButtonID).removeClass('active');
+        }
+        
+        if (response.refresh) {
+            location.reload();
+        }
+    }
+    
+    $.ajax({
+        url: url,
+        type: method,
+        success: success
+    });
+}
