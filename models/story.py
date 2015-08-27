@@ -28,14 +28,23 @@ class Story(Model):
         return cls.get(stories[0].objectId)
         
     # Accessors
-    def accepting_snippets(self):
+    def elapsed_time(self):
         if len(self.accepted_posts) == 0:
             post_time = self.createdAt
         else:
             post_time = self.accepted_posts[-1].createdAt
-            
-        elapsed_time = (datetime.now - self.createdAt).total_seconds()
-        return elapsed_time > Story.editing_window
+    
+        return (datetime.datetime.now() - post_time)
+        
+    def time_til_voting(self):
+        seconds = Story.editing_window - self.elapsed_time().seconds
+        if seconds < 0:
+            return "Voting has begun!"
+        
+        return "%02d:%02d until voting begins." % divmod(divmod(seconds, 3600)[-1], 60)
+    
+    def accepting_snippets(self):
+        return self.elapsed_time().total_seconds() > Story.editing_window
         
     def contributors(self):
         return set([

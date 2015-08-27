@@ -50,7 +50,7 @@
 				<p>Vote on the next snipppet of the story below, or submit one yourself!</p>
 			</div>
 			<div class="edit-nav">
-				<div class="edit-nav-left"><p> 5 min until voting begins </p></div>
+				<div class="edit-nav-left"><p> {{ story.time_til_voting() }} </p></div>
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
 			{% for post in snippets %}
