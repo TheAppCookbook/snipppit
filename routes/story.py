@@ -20,7 +20,7 @@ class Story(Route):
         accepted_posts = sorted([
             models.post.Post.get(post['objectId'])
             for post in story.accepted_posts
-        ], key="createdAt")
+        ], cmp=lambda x, y: 1 if x.createdAt > y.createdAt else -1)
         
         snippets = sorted([
             models.post.Post.get(post['objectId'])

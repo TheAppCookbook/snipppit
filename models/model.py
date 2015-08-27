@@ -1,6 +1,8 @@
 from parse_rest.datatypes import Object
 from parse_rest.query import QueryResourceDoesNotExist
 
+import datetime
+
 
 class Model(Object):
     # Class Accessors
@@ -14,3 +16,7 @@ class Model(Object):
     @classmethod
     def all(cls):
         return cls.Query.all().order_by("createdAt", descending=True)
+        
+    # Accessors
+    def elapsed_time(self):
+        return (self.createdAt - datetime.datetime.now())
