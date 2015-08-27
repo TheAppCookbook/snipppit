@@ -1,11 +1,12 @@
-from parse_rest.datatypes import Object
+from models.model import Model
 from parse_rest.connection import ParseBatcher
 from models.post import Post
 
 import datetime
+import time
 
 
-class Story(Object):
+class Story(Model):
     # Class Properties
     max_post_count = 10
     editing_window = 300  # sec (5 min)
@@ -21,10 +22,10 @@ class Story(Object):
         stories = cls.Query.all().order_by("createdAt", descending=True)    
         stories = [
             story for story in stories
-            if len(story.accepted_posts) < Story.max_post_size
+            if len(story.accepted_posts) < Story.max_post_count
         ]
         
-        return stories[0]
+        return cls.get(stories[0].objectId)
         
     # Accessors
     def accepting_snippets(self):
@@ -35,6 +36,12 @@ class Story(Object):
             
         elapsed_time = (datetime.now - self.createdAt).total_seconds()
         return elapsed_time > Story.editing_window
+        
+    def contributors(self):
+        return set([
+            post.get(p['objectId']).author
+            for p in self.accepted_posts
+        ])
         
     def complete(self):
         return len(self.accepted_posts) == Story.max_post_count

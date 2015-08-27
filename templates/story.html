@@ -19,18 +19,19 @@
 			<div class="paper-view">
 				<div class="paper-header">
 					<div class="paper-header-left">
-						<p> Started XX/XX/XXXX </p>
+						<p> {{ story.createdAt.date().strftime("%d/%m/%Y") }} </p>
 					</div>
 					<div class="paper-header-right">
-						<p> X Contributors </p>
+						<p> {{ story.contributors()|length }} Contributors </p>
 					</div>
 				</div>
 				<div class="paper-title">
-					<h2>This is the title</h2>
+					<h2>{{ story.title }}</h2>
 				</div>
+				{% for post in accepted_posts %}
 				<div class="snipppet-accepted">
 					<div class="snipppet-text">
-						<p> This is a paragraph </p>
+						<p>{{ post.text }}</p>
 					</div>
 					<div class="snipppet-editors">
 						<div class="editor-avatar">
@@ -40,30 +41,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="snipppet-accepted">
-					<div class="snipppet-text">
-						<p> This is a paragraph </p>
-					</div>
-					<div class="snipppet-editors">
-						<div class="editor-avatar">
-						</div>
-						<div class="time-edited">
-							<p>1h ago</p>
-						</div>
-					</div>
-				</div>
-				<div class="snipppet-accepted">
-					<div class="snipppet-text">
-						<p> This is a paragraph </p>
-					</div>
-					<div class="snipppet-editors">
-						<div class="editor-avatar">
-						</div>
-						<div class="time-edited">
-							<p>1h ago</p>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 		<div class="col-md-5 edit-container">
@@ -75,9 +53,10 @@
 				<div class="edit-nav-left"><p> 5 min until voting begins </p></div>
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
+			{% for post in snippets %}
 			<div class="snipppet-card">
 				<div class="snipppet-text">
-					<p> This is the snipppet text </p>
+					<p> {{ post.text }} </p>
 				</div>
 				<div class="snipppet-card-nav">
 					<div class="snipppet-card-nav-left">
@@ -88,45 +67,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="snipppet-card">
-				<div class="snipppet-text">
-					<p> This is the snipppet text </p>
-				</div>
-				<div class="snipppet-card-nav">
-					<div class="snipppet-card-nav-left">
-						<div class="editor-avatar"></div>
-					</div>
-					<div class="snipppet-card-nav-right">
-						<button>vote</button>
-					</div>
-				</div>
-			</div>
-			<div class="snipppet-card">
-				<div class="snipppet-text">
-					<p> This is the snipppet text </p>
-				</div>
-				<div class="snipppet-card-nav">
-					<div class="snipppet-card-nav-left">
-						<div class="editor-avatar"></div>
-					</div>
-					<div class="snipppet-card-nav-right">
-						<button>vote</button>
-					</div>
-				</div>
-			</div>
-			<div class="snipppet-card">
-				<div class="snipppet-text">
-					<p> This is the snipppet text </p>
-				</div>
-				<div class="snipppet-card-nav">
-					<div class="snipppet-card-nav-left">
-						<div class="editor-avatar"></div>
-					</div>
-					<div class="snipppet-card-nav-right">
-						<button>vote</button>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 

@@ -11,7 +11,27 @@ class Story(Route):
     
     def GET(self, request, story_id):
         session = request.values.get("session")
-        return flask.render_template("story.html")
+        
+        story = models.story.Story.get(story_id)
+        if not story:
+            story = models.story.Story.active_story()
+            
+        accepted_posts = [
+            models.post.Post.get(post['objectId'])
+            for post in story.accepted_posts
+        ]
+        
+        snippets = [
+            models.post.Post.get(post['objectId'])
+            for post in story.snippets
+        ]
+        
+        return flask.render_template(
+            "story.html",
+            story=story,
+            accepted_posts=accepted_posts,
+            snippets=snippets
+        )
         
     def PUT(self, request, story_id):
         auth_token = request.values.get("auth_token")
