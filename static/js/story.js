@@ -14,13 +14,14 @@ function time_str(seconds) {
 
 // Formatting
 function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 
 // Live Feedback
 $(function () {
+    // Countdown Label
     setInterval(function () {
         $(".count-down").each(function() {
             var value = seconds($(this).text()) - 1;
