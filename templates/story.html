@@ -58,7 +58,7 @@
 			</div>
 			<div class="edit-nav">
 				<div class="edit-nav-left"><p> <span class="count-down" finished="Voting has begun!">{{ story.time_til_voting() }}</span> until voting begins. </p></div>
-				<div class="edit-nav-right"><button class="compose">compose</button></div>
+				<div class="edit-nav-right"><button class="compose" onclick="composeButtonWasPressed();">compose</button></div>
 			</div>
 			<!--{% if session and not story.complete() %}-->
 			<div class="snipppet-card snipppet-card-editing">
