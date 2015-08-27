@@ -19,7 +19,7 @@ class Story(Model):
     # Class Accessors
     @classmethod
     def active_story(cls):
-        stories = cls.Query.all().order_by("createdAt", descending=True)    
+        stories = cls.Query.all().order_by("createdAt", descending=True)
         stories = [
             story for story in stories
             if len(story.accepted_posts) < Story.max_post_count
@@ -36,6 +36,7 @@ class Story(Model):
     
         return (datetime.datetime.now() - post_time)
         
+    # ... voting
     def time_til_voting(self):
         seconds = Story.editing_window - self.elapsed_time().seconds
         if seconds < 0:
@@ -45,12 +46,19 @@ class Story(Model):
     
     def accepting_snippets(self):
         return self.elapsed_time().total_seconds() > Story.editing_window
-        
+  
+    # ... contributions  
     def contributors(self):
         return set([
             post.get(p['objectId']).author
             for p in self.accepted_posts
         ])
+        
+    def last_update(self):
+        if len(self.accepted_posts) == 0:
+            return self.createdAt
+        else:
+            return self.accepted_posts[-1].createdAt
         
     def complete(self):
         return len(self.accepted_posts) == Story.max_post_count

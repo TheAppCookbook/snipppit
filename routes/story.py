@@ -54,4 +54,27 @@ class Stories(Route):
     methods = ['GET']
     
     def GET(self, request):
-        return "VIEW STORIES LIST"
+        number_of_columns_per_row = 3
+    
+        stories = models.story.Story.all()
+        rows = []
+        
+        row = []
+        for story in stories:
+            if len(story.accepted_posts) > 0:
+                post = models.post.Post.get(story.accepted_posts[-1].objectId)
+                preview = post.text
+            else:
+                preview =  None
+            row.append((story, preview))
+
+            if len(row) == number_of_columns_per_row:
+                rows.append(row)
+                row = []
+        rows.append(row)
+                
+        print(stories)
+        return flask.render_template(
+            "browse.html",
+            rows=rows
+        )

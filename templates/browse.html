@@ -15,32 +15,24 @@
 	</div>
 	<div class="row main-content browse">
 		<div class="col-md-12">
+		    {% for row in rows %}
 			<div class="row browse-row">
+			    {% for story, preview in row %}
 				<div class="col-md-4">
 					<div class="content-card story">
-						<h2> This is the title of the story </h2>
-						<p> Updated xx/xx/xxxx </p>
+						<h2> {{ story.title }} </h2>
+						<p> Updated {{ story.last_update().date().strftime("%m/%d/%Y") }} </p>
 						<div class="divider"></div>
-						<p class="browse-snipppet"> This is the first Snipppet in the story!</p>
+						{% if preview %}
+						<p class="browse-snipppet">{{ preview }}</p>
+						{% else %}
+						<p class="browse-snipppet"><i>The story has just begin...</i></p>
+						{% endif %}
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="content-card story">
-						<h2> This is the title of the story </h2>
-						<p> Updated xx/xx/xxxx </p>
-						<div class="divider"></div>
-						<p class="browse-snipppet"> This is the first Snipppet in the story!</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="content-card story">
-						<h2> This is the title of the story </h2>
-						<p> Updated xx/xx/xxxx </p>
-						<div class="divider"></div>
-						<p class="browse-snipppet"> This is the first Snipppet in the story!</p>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
+			{% endfor %}
 		</div>
 	</div>
 
