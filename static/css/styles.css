@@ -3,11 +3,26 @@ body, html {
 	margin: 0;
 	padding: 0;
 	background: #F4F4F4;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	color: #3B4043;
 	}
 
 h1, h2, h3, h4, h5 {
 	margin: 0;
 	}
+	
+h1 {
+	font-size: 32px;	
+ 	}
+ 	
+ h2 {
+ 	font-size: 26px;
+ 	}
+ 	
+ h3 {
+ 	font-size: 20px;
+ 	}
 
 .row {
 	margin: 0;
@@ -62,6 +77,7 @@ a {
 	border-radius: 3px;
 	padding: 30px 30px 60px 60px;
     overflow: scroll;
+    font-family: 'Georgia';
 	}
 	
 .paper-header {
@@ -194,29 +210,64 @@ button {
 .content-card {
 	padding: 50px;
 	background: #fff;
+	box-shadow: 0px 2px 9px 0px rgba(181,181,181,0.50);
 	}
 	
+@media (max-width: 400px){	
+.content-card.signup {
+	width: 100%;
+	margin: 0 auto;
+	display: inline-block;
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+}
+
+@media (min-width: 401px){	
 .content-card.signup {
 	width: 400px;
 	margin: 0 auto;
 	display: inline-block;
+	border-radius: 5px;
+	}
+}
+	
+.content-card.signup h3 {
+	margin-bottom: 10px;
 	}
 	
+.content-card.signup p {
+	margin-bottom: 30px;
+	color: #9B9B9B;
+	}
+	
+		
 .sub-signup-left {
 	width: 50%;
 	float: left;
 	height: 25px;
+	margin-top: 15px;
+	text-align: left;
 	}
-	
+
 .sub-signup-right {
 	width: 50%;
 	float: left;
 	text-align: right;
 	height: 25px;
+	margin-top: 15px;
 	}
 	
-.sub-signup-left a, .sub-signup-right a {
-	color: black;
+	
+.sub-signup-left a{
+	color: #9b9b9b;
+	padding-left: 15px;
+	}
+	
+.sub-signup-right a {
+	color: #65799B;
+	padding-right: 15px;
 	}
 
 .main-content.browse {
@@ -227,7 +278,7 @@ button {
 .content-card.story {
 	width: 90%;
 	padding: 40px;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin: 0 auto;
 	margin-bottom: 30px;
 	text-align: center;
@@ -249,4 +300,57 @@ button {
 	width: 100%;
 	}
 	
+input[type="text"], input[type="password"]  {
+    height: 50px;
+    width: 290px;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #3B4043;
+    display: inline;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding-left: 15px;
+}
+
+input[type="text"].firstname {
+	width: 145px;
+	border-radius: 3px 0px 0px 3px;
+	display: inline;
+	}
+	
+input[type="text"].lastname {
+	width: 145px;
+	border-radius: 0px 3px 3px 0px;
+	display: inline;
+	border-left: 0px;
+	}
+
+input[type="submit"] {
+    height: 50px;
+    width: 290px;
+    background: #65799B;
+    border: 0px solid #ccc;
+    color: #fff;
+    display: inline;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding-left: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1;
+}
+
+input[type="submit"]:hover {
+	background: #566989;
+	}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+	
+
 	

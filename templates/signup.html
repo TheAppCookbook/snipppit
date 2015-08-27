@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial scale=1.0">
 	<link href="../static/css/bootstrap.css" rel="stylesheet">
 	<link href="../static/css/styles.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
 </head>
 
 <body>	
@@ -14,9 +15,10 @@
 		<div class="col-md-12 signup">
 			<div class="content-card signup">
 				<h3>This is a catchy headline </h3>
+				<p class="sub-heading"> This might be another catchy phrase or something like that</p>
 				<div class="signup-form">
 					<form action="/login" method="POST">
-						<input type="text" placeholder="First Name" name="first_name"><input type="text" placeholder="Last Name" name="last_name">
+						<input type="text" placeholder="First Name" class="firstname" name="first_name"><input type="text" class="lastname" placeholder="Last Name" name="last_name">
 						<input type="text" placeholder="E-mail" name="email">
 						<input type="password" placeholder="Password" name="password">
 						<input type="submit" value="Submit">
