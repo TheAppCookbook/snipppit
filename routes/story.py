@@ -27,9 +27,10 @@ class Story(Route):
         ], cmp=models.post.comparePosts)
         
         initials = ":)"
-        with SessionToken(self.session(request)):
-            user = User.current_user()
-            initials = user.first_name[0] + user.last_name[0]
+        if self.session(request):
+            with SessionToken(self.session(request)):
+                user = User.current_user()
+                initials = user.first_name[0] + user.last_name[0]
         
         return flask.render_template(
             "story.html",
