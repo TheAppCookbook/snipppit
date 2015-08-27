@@ -32,7 +32,24 @@ $(function () {
             $(this).text(time_str(value));
         });
     }, 1000);
+    
+    // Pre-hidden compose
+    $(".snipppet-card-editing").hide();
 });
+
+function composeButtonWasPressed() {
+    if ($(".compose").hasClass("inactive")) {
+        $(".snipppet-card-editing").hide();
+        
+        $(".compose").text("CONFIRM");
+        $(".compose").removeClass("inactive");
+    } else {
+        $(".snipppet-card-editing").show();
+        
+        $(".compose").text("CANCEL");
+        $(".compose").addClass("inactive");
+    }
+}
 
 function voteButtonWasPressed(postID) {
     var voteButtonID = "#vote_" + postID;
