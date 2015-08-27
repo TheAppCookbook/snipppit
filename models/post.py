@@ -23,3 +23,17 @@ class Post(Model):
             len(self.text or "") > 0 and
             len(self.text or "") < Post.textLength
         )
+        
+# Functions
+def comparePosts(self, other):
+    if len(other.voted_users) > len(self.voted_users):
+        return 1
+    elif len(self.voted_users) > len(other.voted_users):
+        return -1
+    
+    if other.createdAt > self.createdAt:
+        return 1
+    else:
+        return -1
+
+    

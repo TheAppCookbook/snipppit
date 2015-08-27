@@ -31,7 +31,7 @@ class Login(Route):
             )
 
         response = flask.make_response(
-            flask.redirect("/", 200)
+            flask.redirect("/")
         )
 
         response.set_cookie("session", user.sessionToken)
@@ -46,4 +46,4 @@ class PasswordReset(Route):
             email=email
         )
         
-        return flask.redirect('/', 200)
+        return flask.redirect('/')

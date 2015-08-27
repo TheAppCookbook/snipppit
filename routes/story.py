@@ -17,15 +17,15 @@ class Story(Route):
         if not story:
             story = models.story.Story.active_story()
             
-        accepted_posts = [
+        accepted_posts = sorted([
             models.post.Post.get(post['objectId'])
             for post in story.accepted_posts
-        ]
+        ], key="createdAt")
         
-        snippets = [
+        snippets = sorted([
             models.post.Post.get(post['objectId'])
             for post in story.snippets
-        ]
+        ], cmp=models.post.comparePosts)
         
         return flask.render_template(
             "story.html",

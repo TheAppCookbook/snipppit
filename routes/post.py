@@ -30,7 +30,7 @@ class Post(Route):
         story.snippets.append(post)
         story.save()
         
-        return flask.redirect('/', 200)
+        return flask.redirect('/')
         
 
 class Vote(Route):
@@ -58,4 +58,4 @@ class Vote(Route):
             story.accept_post(post)
             story.save()
         
-        return flask.redirect('/', 200)
+        return flask.redirect('/')
