@@ -1,6 +1,9 @@
 from parse_rest.user import User
 from models.model import Model
 
+from parse_rest.connection import SessionToken
+
+
 
 class Post(Model):
     # Class Properties
@@ -23,6 +26,13 @@ class Post(Model):
             len(self.text or "") > 0 and
             len(self.text or "") < Post.textLength
         )
+        
+    def user_voted(self, session):
+        with SessionToken(session):        
+            return bool([
+                user for user in self.voted_users
+                if user['objectId'] == User.current_user().objectId
+            ])
         
 # Functions
 def comparePosts(self, other):
