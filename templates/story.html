@@ -53,21 +53,27 @@
 				<div class="edit-nav-left"><p> {{ story.time_til_voting() }} </p></div>
 				<div class="edit-nav-right"><button>compose</button></div>
 			</div>
-			{% for post in snippets %}
-						
+			{% if session %}
 			<div class="snipppet-card snipppet-card-editing">
-				<div class="snipppet-text">
-					<input type="textarea" placeholder="Type your snippet here">
-				</div>
-				<div class="snipppet-card-nav">
-					<div class="snipppet-card-nav-left">
-						<div class="editor-avatar"></div>
+			    <form action="/post" method="POST">
+			        <input type="hidden" name="session" value="{{ session }}" />
+			    
+					<div class="snipppet-text">
+						<input type="textarea" name="text" placeholder="Type your snippet here">
 					</div>
-					<div class="snipppet-card-nav-right">
-						<button>Submit</button>
+					<div class="snipppet-card-nav">
+						<div class="snipppet-card-nav-left">
+							<div class="editor-avatar"></div>
+						</div>
+						<div class="snipppet-card-nav-right">
+							<input type="submit" value="Submit" />
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
+			{% endif %}
+			
+			{% for post in snippets %}
 			<div class="snipppet-card">
 				<div class="snipppet-text">
 					<p> {{ post.text }} </p>

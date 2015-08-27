@@ -1,6 +1,8 @@
 from parse_rest.connection import SessionToken
 from parse_rest.core import ResourceRequestNotFound
 
+import flask
+
 
 class Route:
     methods = []
@@ -14,16 +16,22 @@ class Route:
             return self.PUT(request, *args)
         elif request.method == 'DELETE':
             return self.DELETE(request, *args)
+            
+    def session(self, request):
+        return (
+            request.values.get('session') or
+            request.cookies.get("session")
+        )
 
 def require_session(func):
     def func_wrapper(self, request, *args):
         try:
-            session = request.values.get('session')
+            session = self.session(request)
             with SessionToken(session):
                  return func(self, request, *args)
         except ResourceRequestNotFound:
             pass
              
-        return ("", 401)
+        return ("/login", 401)
         
     return func_wrapper

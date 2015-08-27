@@ -13,7 +13,7 @@ class Post(Route):
     def POST(self, request):
         story = models.story.Story.active_story()
         if not story:
-            return ("", 400)
+            return ("Cannot find active story", 400)
             
         post = models.post.Post(
             text=request.values.get("text"),
@@ -23,14 +23,14 @@ class Post(Route):
         )
         
         if not post or not post.valid():
-            return ("", 400)
+            return ("Post invalid " + str(post), 400)
             
         post.save()
         
         story.snippets.append(post)
         story.save()
         
-        return flask.redirect('/', 200)
+        return flask.redirect('/')
         
 
 class Vote(Route):
@@ -58,4 +58,4 @@ class Vote(Route):
             story.accept_post(post)
             story.save()
         
-        return flask.redirect('/', 200)
+        return flask.redirect('/')

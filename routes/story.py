@@ -2,6 +2,7 @@ from routes.route import Route
 import models
 
 from parse_rest.connection import ACCESS_KEYS
+from parse_rest.user import User
 
 import flask
 
@@ -16,21 +17,22 @@ class Story(Route):
         if not story:
             story = models.story.Story.active_story()
             
-        accepted_posts = [
+        accepted_posts = sorted([
             models.post.Post.get(post['objectId'])
             for post in story.accepted_posts
-        ]
+        ], key="createdAt")
         
-        snippets = [
+        snippets = sorted([
             models.post.Post.get(post['objectId'])
             for post in story.snippets
-        ]
+        ], cmp=models.post.comparePosts)
         
         return flask.render_template(
             "story.html",
             story=story,
             accepted_posts=accepted_posts,
-            snippets=snippets
+            snippets=snippets,
+            session = self.session(request)
         )
         
     def PUT(self, request, story_id):

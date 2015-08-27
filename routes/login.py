@@ -10,7 +10,7 @@ class Login(Route):
     methods = ['GET', 'POST']
     
     def GET(self, request):
-        return flask.render_template("login.html")
+        return flask.render_template("signup.html")
         
     def POST(self, request):
         username = request.values.get("email").lower()
@@ -30,8 +30,12 @@ class Login(Route):
                 password
             )
 
-        redirect_path = '/?session=' + user.sessionToken
-        return flask.redirect(redirect_path, 200)
+        response = flask.make_response(
+            flask.redirect("/")
+        )
+
+        response.set_cookie("session", user.sessionToken)
+        return response
 
 class PasswordReset(Route):
     methods = ['GET']
@@ -42,4 +46,4 @@ class PasswordReset(Route):
             email=email
         )
         
-        return flask.redirect('/', 200)
+        return flask.redirect('/')
