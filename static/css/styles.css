@@ -33,6 +33,21 @@ a {
 	color: #fff;
 	}
 
+.logo {
+	position: fixed;
+	width: 100%;
+	font-size: 26px;
+	font-family: 'Georgia-Italic';
+	text-align:center;
+	z-index: 3;
+	height: 60px;
+	left: 0;
+	right: 0;
+	color: #fff;
+	padding-top: 9px;
+	}
+	
+
 .navbar-main {
 	height: 60px;
 	width: 100%;
