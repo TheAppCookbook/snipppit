@@ -73,7 +73,7 @@ class Stories(Route):
         row = []
         for story in stories:
             if len(story.accepted_posts) > 0:
-                post = models.post.Post.get(story.accepted_posts[-1].objectId)
+                post = models.post.Post.get(story.accepted_posts[-1]['objectId'])
                 preview = post.text
             else:
                 preview =  None
