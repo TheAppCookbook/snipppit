@@ -10,3 +10,7 @@ class Model(Object):
             return cls.Query.get(objectId=id)
         except QueryResourceDoesNotExist:
             return None
+    
+    @classmethod
+    def all(cls):
+        return cls.Query.all().order_by("createdAt", descending=True)

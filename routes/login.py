@@ -37,6 +37,17 @@ class Login(Route):
         response.set_cookie("session", user.sessionToken)
         return response
 
+class Logout(Route):
+    methods = ['GET']
+    
+    def GET(self, request):
+        response = flask.make_response(
+            flask.redirect("/")
+        )
+
+        response.set_cookie("session", "", expires=0)
+        return response
+
 class PasswordReset(Route):
     methods = ['GET']
     
