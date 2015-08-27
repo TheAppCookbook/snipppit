@@ -2,7 +2,7 @@
 <html lang="en">
   
 <head>
-	<title>Snippit</title>
+	<title>Snipppit</title>
 	<meta charset="UTF-8">		
 	<meta name="viewport" content="width=device-width, initial scale=1.0">
 	<link href="../static/css/bootstrap.css" rel="stylesheet">
@@ -89,8 +89,12 @@
 					<div class="snipppet-card-nav-left">
 						<div class="editor-avatar"></div>
 					</div>
+					<!--{% if session %}-->
 					<div class="snipppet-card-nav-right">
-						<button class="vote">vote</button>
+					<!--{% else %}-->
+					<div class="snipppet-card-nav-right disabled">
+					<!--{% endif %}-->
+						<button class="vote" id="vote_{{ post.objectId }}" onclick="voteButtonWasPressed('{{ post.objectId }}');"> {{ post.user_votes|length }}/{{ max_vote_count }} </button>
 					</div>
 				</div>
 			</div>

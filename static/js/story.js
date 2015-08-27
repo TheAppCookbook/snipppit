@@ -1,7 +1,6 @@
 // Time
 function seconds(time_str) {
     var pieces = time_str.split(':');
-    console.log(pieces);
     return (parseInt(pieces[0]) * 60) + parseInt(pieces[1]);
 }
 
@@ -34,3 +33,20 @@ $(function () {
         });
     }, 1000);
 });
+
+function voteButtonWasPressed(postID) {
+    $.post("/post/" + postID + "/vote", {}, function(response) {
+        response = JSON.parse(response);
+        var voteButtonID = "#vote_" + postID;
+        
+        var text = $(voteButtonID).text();
+        var pieces = text.split('/');
+
+        $(voteButtonID).text(response.votes + '/' + pieces[1]);
+        $(voteButtonID).addClass('active');
+        
+        if (response.refresh) {
+            location.reload();
+        }
+    });
+}

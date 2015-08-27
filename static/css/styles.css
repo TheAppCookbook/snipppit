@@ -464,4 +464,6 @@ button.vote.active {
 	padding-left: 25px;
 	}
 
-	
+.disabled {
+    pointer-events: none;
+}
