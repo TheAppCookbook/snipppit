@@ -96,6 +96,8 @@
 					<!--{% endif %}-->
 					    <!--{% if session and post.user_voted(session) %}-->
 						<button class="vote active" id="vote_{{ post.objectId }}" onclick="voteButtonWasPressed('{{ post.objectId }}');">
+						<!--{% elif user_voted_story %}-->
+						<button class="vote disabled" id="vote_{{ post.objectId }}" onclick="voteButtonWasPressed('{{ post.objectId }}');">
 						<!--{% else %}-->
 						<button class="vote" id="vote_{{ post.objectId }}" onclick="voteButtonWasPressed('{{ post.objectId }}');">
 						<!--{% endif %}-->

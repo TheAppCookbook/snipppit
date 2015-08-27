@@ -52,6 +52,8 @@ function composeButtonWasPressed() {
 }
 
 function voteButtonWasPressed(postID) {
+    $(".vote").addClass("disabled");
+    
     var voteButtonID = "#vote_" + postID;
     var url = "/post/" + postID + "/vote";
     
@@ -69,8 +71,10 @@ function voteButtonWasPressed(postID) {
         $(voteButtonID).text(response.votes + '/' + pieces[1]);
         if (method == 'put') {
             $(voteButtonID).addClass('active');
+            $(voteButtonID).removeClass("disabled");
         } else {
             $(voteButtonID).removeClass('active');
+            $(".vote").removeClass('disabled');
         }
         
         if (response.refresh) {

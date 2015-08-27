@@ -1,6 +1,9 @@
 from models.model import Model
 from parse_rest.connection import ParseBatcher
 from models.post import Post
+from parse_rest.user import User
+
+from parse_rest.connection import SessionToken
 
 import datetime
 import time
@@ -28,14 +31,8 @@ class Story(Model):
         return cls.get(stories[0].objectId)
         
     # Accessors
-    def elapsed_time(self):
-        if len(self.accepted_posts) == 0:
-            post_time = self.createdAt
-        else:
-            post = Post.get(self.accepted_posts[-1]['objectId'])
-            post_time = post.createdAt
-    
-        return (datetime.datetime.now() - post_time)
+    def elapsed_time(self):    
+        return (self.updatedAt - datetime.datetime.now())
         
     # ... voting
     def time_til_voting(self):
@@ -55,15 +52,21 @@ class Story(Model):
             for p in self.accepted_posts
         ])
         
-    def last_update(self):
-        if len(self.accepted_posts) == 0:
-            return self.createdAt
-        else:
-            post = Post.get(self.accepted_posts[-1]['objectId'])
-            return post.createdAt
-        
     def complete(self):
         return len(self.accepted_posts) == Story.max_post_count
+        
+    def user_voted(self, session):
+        with SessionToken(session):
+            for snippet in self.snippets:
+                post = Post.get(snippet['objectId'])
+                user_voted = bool([
+                    user for user in post.voted_users
+                    if user['objectId'] == User.current_user().objectId
+                ])
+                
+                if user_voted:
+                    return True
+            return False
         
     # Mutators
     def accept_post(self, post):

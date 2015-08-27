@@ -22,7 +22,7 @@
 				<div class="col-md-4">
 					<div class="content-card story" onclick="window.location = '/story/{{ story.objectId }}';">
 						<h2> {{ story.title }} </h2>
-						<p> Updated {{ story.last_update().date().strftime("%m/%d/%Y") }} </p>
+						<p> Updated {{ story.updatedAt.date().strftime("%m/%d/%Y") }} </p>
 						<div class="divider"></div>
 						<!--{% if preview %}-->
 						<p class="browse-snipppet">{{ preview }}</p>

@@ -10,9 +10,7 @@ import flask
 class Story(Route):
     methods = ['GET', 'PUT']
     
-    def GET(self, request, story_id):
-        session = request.values.get("session")
-        
+    def GET(self, request, story_id):        
         story = models.story.Story.get(story_id)
         if not story:
             story = models.story.Story.active_story()
@@ -33,7 +31,8 @@ class Story(Route):
             accepted_posts=accepted_posts,
             snippets=snippets,
             session = self.session(request),
-            max_vote_count=models.post.Post.max_vote_count()
+            max_vote_count=models.post.Post.max_vote_count(),
+            user_voted_story=story.user_voted(self.session(request))
         )
         
     def PUT(self, request, story_id):
