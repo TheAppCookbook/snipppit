@@ -33,7 +33,7 @@
 					</div>
 				</div>
 				<div class="paper-title">
-					<h2>{{ story.title }}</h2>
+					<h1>{{ story.title }}</h1>
 				</div>
 				<!--{% for post in accepted_posts %}-->
 				<div class="snipppet-accepted">
@@ -53,12 +53,12 @@
 		</div>
 		<div class="col-md-5 edit-container">
 			<div class="edit-header">
-				<h3>What happens next?</h3>
+				<h2>What happens next?</h2>
 				<p>Vote on the next snipppet of the story below, or submit one yourself!</p>
 			</div>
 			<div class="edit-nav">
 				<div class="edit-nav-left"><p> <span class="count-down" finished="Voting has begun!">{{ story.time_til_voting() }}</span> until voting begins. </p></div>
-				<div class="edit-nav-right"><button>compose</button></div>
+				<div class="edit-nav-right"><button class="compose">compose</button></div>
 			</div>
 			<!--{% if session and not story.complete() %}-->
 			<div class="snipppet-card snipppet-card-editing">
@@ -66,14 +66,14 @@
 			        <input type="hidden" name="session" value="{{ session }}" />
 			    
 					<div class="snipppet-text">
-						<input type="textarea" name="text" placeholder="Type your snippet here">
+						<textarea name="text" placeholder="Type your snippet here"></textarea>
 					</div>
 					<div class="snipppet-card-nav">
 						<div class="snipppet-card-nav-left">
 							<div class="editor-avatar"></div>
 						</div>
 						<div class="snipppet-card-nav-right">
-							<input type="submit" value="Submit" />
+							<input type="submit" value="Submit" class="submit-snipppet" />
 						</div>
 					</div>
 				</form>
@@ -90,7 +90,7 @@
 						<div class="editor-avatar"></div>
 					</div>
 					<div class="snipppet-card-nav-right">
-						<button>vote</button>
+						<button class="vote">vote</button>
 					</div>
 				</div>
 			</div>
