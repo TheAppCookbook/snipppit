@@ -46,12 +46,16 @@ a {
 .navbar-main-left {
 	width: 50%;
 	float: left;
+	display: table-cell;
+	vertical-align: middle;
 	}
 	
 .navbar-main-right {
 	width: 50%;
 	float: right;
 	text-align: right;
+	display: table-cell;
+	vertical-align: middle;
 	}
 	
 .paper-container {
@@ -242,6 +246,7 @@ button {
 	color: #9B9B9B;
 	}
 	
+	
 		
 .sub-signup-left {
 	width: 50%;
@@ -284,6 +289,19 @@ button {
 	text-align: center;
 	}
 	
+.content-card.story h2 {
+	margin-bottom: 10px;
+	}
+	
+.content-card.story p {
+	color: #9b9b9b;
+	margin-bottom: 25px;
+	}
+	
+.content-card.story .divider {
+	margin-bottom: 25px;
+	}
+	
 .browse-row {
 	margin-bottom: 30px;
 	padding-left: 75px;
@@ -292,6 +310,9 @@ button {
 
 .browse-snipppet {
 	text-align: left;
+	color: #3B4043 !important;
+	font-family: 'Georgia' !important;
+	font-size: 20px;
 	}
 	
 .divider {
