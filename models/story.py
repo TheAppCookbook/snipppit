@@ -38,7 +38,7 @@ class Story(Model):
     def time_til_voting(self):
         seconds = Story.editing_window - self.elapsed_time().seconds
         if seconds < 0:
-            return "00:00"
+            return "05:00"
         
         return "%02d:%02d" % divmod(divmod(seconds, 3600)[-1], 60)
     

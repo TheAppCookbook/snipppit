@@ -32,6 +32,6 @@ def require_session(func):
         except ResourceRequestNotFound:
             pass
              
-        return ("/login", 401)
+        return flask.redirect('/login')
         
     return func_wrapper
